@@ -1,19 +1,16 @@
-from django.shortcuts import render, redirect
-from django.contrib.auth.views import LoginView, LogoutView
-from django.contrib.auth.decorators import login_required
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status
+from .models import CustomUser
+from .serializers import UserRegistrationSerializer
 
-from .forms import CustomUserCreationForm 
-from .models import CustomUser, Article
+class UserRegistrationView(APIView):
+    def post(self, request):
+        serializer = UserRegistrationSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-def signup_view(request):
-    if request.method == 'POST':
-        form = CustomUserCreationForm(request.POST, request.FILES)
-        if form.is_valid():
-            form.save()
-            return redirect('dashboard:signup')
-    else:
-        form = CustomUserCreationForm()
-
-    return render(request, 'dashboard/signup.html', {'form': form})
 
 
