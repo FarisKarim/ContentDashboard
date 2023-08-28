@@ -12,37 +12,17 @@ import {
 } from "@mui/material";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import { styled } from "@mui/material/styles";
-
-// Styling with the styled utility
-const StyledPaper = styled(Paper)(({ theme }) => ({
-  padding: theme.spacing(3),
-  display: "flex",
-  flexDirection: "column",
-  alignItems: "center",
-}));
-
-const StyledAvatar = styled(Avatar)(({ theme }) => ({
-  margin: theme.spacing(1),
-  backgroundColor: theme.palette.secondary.main,
-}));
-
-const StyledForm = styled("form")(({ theme }) => ({
-  width: "100%",
-  marginTop: theme.spacing(3),
-}));
-
-const StyledButton = styled(Button)(({ theme }) => ({
-  margin: theme.spacing(3, 0, 2),
-}));
+import "./Signup.css";
 
 const Signup = () => {
-  const [formData, setFormData] = useState({
+  const defaultFormData = {
     email: "",
     first_name: "",
     last_name: "",
     password: "",
     password2: "",
-  });
+  };
+  const [formData, setFormData] = useState(defaultFormData);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -50,11 +30,41 @@ const Signup = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    console.log('Submitting form')
+    // Validations
+    const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
+    if (!emailRegex.test(formData.email)) {
+      alert("Please enter a valid email.");
+      return;
+    }
+
+    if (!formData.first_name.trim()) {
+      alert("First Name is required.");
+      return;
+    }
+
+    if (!formData.last_name.trim()) {
+      alert("Last Name is required.");
+      return;
+    }
+
+    if (formData.password !== formData.password2) {
+      alert("Passwords do not match.");
+      return;
+    }
+
     try {
       const response = await axios.post(
         "http://127.0.0.1:8000/dashboard/api/register/",
         formData
       );
+      if (response.status === 201) {
+        console.log(`User: ${formData.first_name} has been registered!`);
+        setFormData(defaultFormData);
+      } else {
+        console.log("Received unexpected status code:", response.status);
+      }
       console.log(response.data);
     } catch (error) {
       console.error("There was an error registering", error);
@@ -62,14 +72,14 @@ const Signup = () => {
   };
 
   return (
-    <Container component="main" maxWidth="xs">
-      <StyledAvatar>
+    <Container component="main" maxWidth="xs" className="container">
+      {/* <Avatar className="avatar">
         <LockOutlinedIcon />
-      </StyledAvatar>
-      <Typography component="h1" variant="h5">
+      </Avatar> */}
+      <Typography component="h1" variant="h5" className="signup-title">
         Sign up
       </Typography>
-      <StyledForm onSubmit={handleSubmit}>
+      <form className="form" onSubmit={handleSubmit}>
         <Grid container spacing={2}>
           <Grid item xs={12}>
             <TextField
@@ -82,6 +92,7 @@ const Signup = () => {
               autoComplete="email"
               value={formData.email}
               onChange={handleChange}
+              sx={{ "& .MuiOutlinedInput-root": { borderRadius: "15px" } }}
             />
           </Grid>
           <Grid item xs={12} sm={6}>
@@ -95,6 +106,7 @@ const Signup = () => {
               autoComplete="fname"
               value={formData.first_name}
               onChange={handleChange}
+              sx={{ "& .MuiOutlinedInput-root": { borderRadius: "15px" } }}
             />
           </Grid>
           <Grid item xs={12} sm={6}>
@@ -108,6 +120,7 @@ const Signup = () => {
               autoComplete="lname"
               value={formData.last_name}
               onChange={handleChange}
+              sx={{ "& .MuiOutlinedInput-root": { borderRadius: "15px" } }}
             />
           </Grid>
           <Grid item xs={12}>
@@ -122,6 +135,7 @@ const Signup = () => {
               autoComplete="current-password"
               value={formData.password}
               onChange={handleChange}
+              sx={{ "& .MuiOutlinedInput-root": { borderRadius: "15px" } }}
             />
           </Grid>
           <Grid item xs={12}>
@@ -133,20 +147,23 @@ const Signup = () => {
               label="Confirm Password"
               type="password"
               id="password2"
+              sx={{ "& .MuiOutlinedInput-root": { borderRadius: "15px" } }}
               value={formData.password2}
               onChange={handleChange}
             />
           </Grid>
         </Grid>
-        <StyledButton
+        <Button
           type="submit"
           fullWidth
           variant="contained"
           color="primary"
+          className="button"
+          sx={{ borderRadius: "15px" }}
         >
           Sign Up
-        </StyledButton>
-      </StyledForm>
+        </Button>
+      </form>
     </Container>
   );
 };
