@@ -82,8 +82,7 @@ const Signup = () => {
           className="signup-title"
           sx={{
             color: "white", 
-            fontWeight: "bold", 
-            fontFamily: "'Roboto', sans-serif",
+            fontFamily: "'Roboto Mono', monospace",
           }}
         >
           Sign up

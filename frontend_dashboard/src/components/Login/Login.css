@@ -1,0 +1,105 @@
+/* Login.css */
+.hello-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 300px;  /* This is the width of your .login-container */
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2em;  
+    font-family: "Roboto Mono", monospace;
+}
+.login-container {
+    background-color: black;
+    color: white;
+    padding: 20px;
+    border-radius: 0; 
+    position: absolute;
+    right: 0;
+    top: 0;          
+    bottom: 0;       
+    width: 300px;    
+    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1); 
+    display: flex;   
+    align-items: center; 
+    justify-content: center; 
+}
+  
+  .login-title {
+    color: white;
+    font-family: "Roboto Mono", monospace;
+    text-align: center; 
+    margin-bottom: 20px; 
+    position: relative; 
+    top: -50px;
+
+  }
+  
+  .custom-input .MuiOutlinedInput-root {
+    color: white;
+    border-radius: 15px;
+  }
+  
+  .custom-input .MuiOutlinedInput-notchedOutline {
+    border-color: white;
+  }
+  
+  .custom-input:hover .MuiOutlinedInput-notchedOutline {
+    border-color: white;
+    box-shadow: 0 0 10px #ffffff;
+  }
+  
+  .custom-input .Mui-focused .MuiOutlinedInput-notchedOutline {
+    border-color: white;
+  }
+  
+  .custom-input .MuiFormLabel-root {
+    color: white;
+  }
+  
+  .custom-input .Mui-focused .MuiFormLabel-root {
+    color: white;
+  }
+.MuiTypography-root.login-title {
+    font-family: "Roboto Mono", monospace;
+}
+/* Assuming the width of your black card is 300px as in your original code */
+
+.wrapper {
+    height: 100vh;
+    width: calc(100% - 300px);
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+  }
+  
+  
+  
+  .typing-demo {
+  width: 8ch; /* set to the width of "Hello" */
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 3px solid;
+  font-family: "Roboto Mono", monospace;
+  font-size: 2em;
+
+  /* Two animations: typing and blink. Typing runs once, blink runs indefinitely */
+  animation: typing 2s steps(8) forwards, blink .5s step-end infinite alternate;
+}
+
+@keyframes typing {
+  from {
+    width: 0
+  }
+  to {
+    width: 8ch;
+  }
+}
+    
+@keyframes blink {
+  50% {
+    border-color: transparent
+  }
+}
