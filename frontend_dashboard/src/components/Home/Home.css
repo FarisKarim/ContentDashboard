@@ -1,0 +1,20 @@
+.bg-light-purple {
+    background-color: #f5eaf8; 
+}
+
+.bg-purple {
+    background-color: #a864c7; 
+}
+
+.jumbotron.bg-purple.text-white hr.bg-light {
+    border-top-color: #f5eaf8;
+}
+
+.btn.btn-dark {
+    background-color: #6b4899; 
+    border: none;
+}
+
+.btn.btn-dark:hover {
+    background-color: #583783; 
+}

@@ -1,0 +1,38 @@
+.navbar.bg-light-purple {
+    padding-left: 5%;  /* Space to the left */
+    padding-right: 5%;
+    background-color: #FFDAB9; /* Space to the right */
+}
+.custom-btn {
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.8); /* Glow effect */
+    transition: all 0.3s; /* Smooth transition */
+}
+
+.custom-btn:hover {
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.8), 0 6px 10px rgba(0, 0, 0, 0.1); /* Enhanced glow + soft shadow for lift effect */
+    transform: translateY(-3px); /* Move the button slightly upwards */
+}
+
+.custom-btn:active {
+    transform: translateY(1px); /* Press down effect when active */
+}
+@keyframes bounceIn {
+    0% {
+      transform: scale(0.7);
+      opacity: 0;
+    }
+    50% {
+      transform: scale(1.2);
+      opacity: 0.5;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  
+  .navbar-brand-animated {
+    animation: bounceIn 0.8s forwards;
+  }
+  
