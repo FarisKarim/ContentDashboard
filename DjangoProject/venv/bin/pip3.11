@@ -1,4 +1,4 @@
-#!/Users/faris/Desktop/DjangoProject/venv/bin/python3.11
+#!/Users/faris/Desktop/ProjectDashboard/DjangoProject/venv/bin/python3.11
 # -*- coding: utf-8 -*-
 import re
 import sys
