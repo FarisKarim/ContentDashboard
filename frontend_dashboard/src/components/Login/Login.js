@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { Button, TextField, Grid, Container, Typography } from "@mui/material";
 import "./Login.css";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -12,18 +13,29 @@ const Login = () => {
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
-
+  const navigate = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     try {
       const response = await axios.post(
         "http://127.0.0.1:8000/dashboard/api/login/",
-        formData
+        {
+          username: formData.email,
+          password: formData.password,
+        }
       );
-      if (response.status === 200) {
+      if (response.status === 200 && response.data.token) {
         console.log("Successfully logged in!");
-        // Add logic to store JWT or handle user session
+
+        localStorage.setItem("token", response.data.token);
+
+        navigate("/home");
+        console.log("Token will be removed in 10 minutes.");
+
+        setTimeout(() => {
+          localStorage.removeItem("token");
+          console.log("Token removed after 10 minutes");
+        }, 600000);
       } else {
         console.log("Received unexpected status code:", response.status);
       }
