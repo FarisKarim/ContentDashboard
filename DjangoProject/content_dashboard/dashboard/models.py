@@ -46,3 +46,21 @@ class Article(models.Model):
     pub_date = models.DateTimeField('date published')
     author = models.ForeignKey(CustomUser, on_delete=models.CASCADE, null=True, blank=True)
 
+class Company(models.Model):
+    name = models.CharField(max_length=200)
+    industry = models.CharField(max_length=200)
+    overview = models.TextField()
+
+    def __str__(self):
+        return self.name
+
+class JobOpening(models.Model):
+    company = models.ForeignKey(Company, on_delete=models.CASCADE, related_name='job_openings')
+    title = models.CharField(max_length=200)
+    description = models.TextField(null=True, blank=True)
+    requirements = models.TextField(null=True, blank=True)
+    date_posted = models.DateField(auto_now_add=True)
+    external_link = models.URLField(max_length=500)
+
+    def __str__(self):
+        return self.title

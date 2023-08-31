@@ -1,8 +1,5 @@
 from rest_framework import serializers
-from .models import CustomUser
-
-from rest_framework import serializers
-from .models import CustomUser
+from .models import CustomUser, Article, Company, JobOpening
 
 class UserRegistrationSerializer(serializers.ModelSerializer):
     password2 = serializers.CharField(write_only=True)
@@ -26,3 +23,20 @@ class UserRegistrationSerializer(serializers.ModelSerializer):
         user.set_password(password)
         user.save()
         return user
+
+class CompanySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Company
+        fields = '__all__'
+
+class CompanyNameSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Company
+        fields = ['name']
+
+class JobOpeningSerializer(serializers.ModelSerializer):
+    company = CompanyNameSerializer(read_only=True)
+
+    class Meta:
+        model = JobOpening
+        fields = '__all__'
