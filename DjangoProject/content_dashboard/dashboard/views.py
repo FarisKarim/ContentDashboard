@@ -40,6 +40,7 @@ class CompanyViewSet(viewsets.ModelViewSet):
     serializer_class = CompanySerializer
 
 
+
 class JobOpeningViewSet(viewsets.ModelViewSet):
     serializer_class = JobOpeningSerializer
 
