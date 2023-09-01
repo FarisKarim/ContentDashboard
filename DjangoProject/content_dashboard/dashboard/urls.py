@@ -8,7 +8,6 @@ router.register(r'job_openings', JobOpeningViewSet,basename='jobopenings')
 
 urlpatterns = [
     path('api/register/', UserRegistrationView.as_view(), name='user-register'),
-    path('api/some_endpoint/', SomeEndpointView.as_view(), name='some-endpoint'),
     path('api/login/', CustomAuthToken.as_view()),
     *router.urls,
 ]

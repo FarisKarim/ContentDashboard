@@ -7,6 +7,7 @@ import Signup from "./components/Signup/Signup";
 import ProtectedRoute from "./utils/ProtectedRoute";
 import CompanyList from "./components/Company/CompanyList";
 import JobOpeningList from "./components/JobOpenings/JobOpeningsList";
+import CompanyDetail from "./components/Company/CompanyDetail/CompanyDetail";
 
 const App = () => {
   return (
@@ -19,6 +20,7 @@ const App = () => {
             <Route index element={<Home />} />
           </Route>
           <Route path="/companies" element={<CompanyList />} />
+          <Route path="/companies/:id" element={<CompanyDetail />} />
           <Route
             path="/companies/:id/job_openings"
             element={<JobOpeningList />}
