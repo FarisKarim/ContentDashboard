@@ -66,6 +66,7 @@ class AdzunaJobsViewSet(viewsets.ViewSet):
         params = {
             'app_id': config('ADZUNA_APP_ID'),
             'app_key': config('ADZUNA_APP_KEY'),
+            'results_per_page': 20,
             'what': description,
         }
 

@@ -1,97 +1,110 @@
-/* AdzunaJobs.css */
-
 .adzuna-container {
-  font-family: "Arial", sans-serif;
-  padding: 40px;
-  background-color: #f9f9f9;
-  border-radius: 8px;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-  max-width: 600px;
-  margin: 40px auto;
+    font-family: 'Roboto Mono', monospace;
+    padding: 40px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 1200px;
+    margin: 40px auto;
 }
 
-.adzuna__title {
-  color: #444;
-  text-align: center;
-  margin-bottom: 40px;
-  font-weight: bold;
-  font-size: 24px;
-}
-
-.adzuna__input {
-  width: 100%;
-  padding: 12px 16px;
-  margin-bottom: 20px;
-  border: 1px solid #e0e0e0;
-  border-radius: 6px;
-  background-color: #fff;
-  transition: border-color 0.3s;
-}
-
-.adzuna__input:focus {
-  border-color: #007bff;
-  outline: none;
-}
-
-.adzuna__button {
-  background-color: #007bff;
-  color: #fff;
-  padding: 12px 20px;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  display: block;
-  margin: 30px auto;
-  transition: background-color 0.3s, transform 0.2s;
-}
-
-.adzuna__button:hover {
-  background-color: #0056b3;
-  transform: scale(1.05);
-}
-
-.adzuna__job-title {
-    font-weight: bold;
-    margin-bottom: 8px;
-    font-size: 18px;
+.adzuna-title {
     color: #333;
-}
-.adzuna__job-description {
-    margin-top: 10px;
-    color: #666;
-    line-height: 1.5;
-    font-size: 14px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 3; /* Number of lines to display before truncating */
-    -webkit-box-orient: vertical;
-}
-.adzuna__job-list {
-  list-style-type: none;
-  padding: 0;
+    text-align: center;
+    margin-bottom: 50px;
+    font-family: 'Arvo', serif;
 }
 
-.adzuna__job-item {
-  background-color: #fff;
-  padding: 20px 15px;
-  border-radius: 6px;
-  margin-bottom: 15px;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.08);
-  transition: box-shadow 0.3s;
+.adzuna-input-card {
+    background-color: #ffffff;
+    padding: 15px; 
+    border-radius: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 0 auto 80px auto; /* Centered horizontally and given space at the bottom */
+    width: 50%; /* Adjust this percentage to make it smaller or larger as desired */
 }
 
-.adzuna__job-item:hover {
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.12);
+.adzuna-input {
+    width: 100%;
+    padding: 8px;
+    margin: 10px 0; /* Reduced to 0 for the sides */
+    border: 1px solid #ccc;
+    border-radius: 15px;
 }
-.adzuna__job-link {
-    color: #007BFF;
+
+.adzuna-button {
+    background-color: #b30000;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    display: block;
+    margin: 30px auto;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.adzuna-button:hover {
+    background-color: #ff1a1a;
+    transform: scale(1.05);
+}
+
+.adzuna-job-list-header {
+    color: #333;
+    margin-top: 80px;
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.adzuna-job-list {
+    list-style-type: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+}
+
+.adzuna-job-item {
+    background-color: #1c1c1c;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    display: flex;
+    flex-direction: column; 
+    justify-content: space-between;
+}
+
+.adzuna-job-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(26, 255, 26, 0.3), 0 0 20px rgba(26, 255, 26, 0.2); /* Green glow effect */
+}
+.adzuna-job-title {
+    font-weight: bold;
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    color: #17f37a;
+    font-family: 'Arvo', serif;
+}
+
+.adzuna-job-description {
+    flex-grow: 1; 
+    margin-bottom: 15px;
+    color: #bbb; 
+    font-family: 'Roboto Mono', monospace; 
+}
+.adzuna-job-link {
+    align-self: center;
+    color: #ffffff;  /* White text for contrast */
+    background-color: #4CAF50;  /* Green background for the link */
+    padding: 5px 15px;
+    border-radius: 15px;
     text-decoration: none;
-    margin-top: 15px;
-    display: inline-block;
-    transition: color 0.3s;
+    transition: background-color 0.3s, color 0.3s;
+    font-family: 'Roboto Mono' monospace;
 }
 
-.adzuna__job-link:hover {
-    color: #0056b3;
+.adzuna-job-link:hover {
+    background-color: #388E3C;  /* Darker shade of green on hover */
+    color: #ffffff;
 }
