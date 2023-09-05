@@ -33,42 +33,44 @@ const AdzunaJobSearch = () => {
   };
   return (
     <div className="adzuna-container">
-      <h2 className="adzuna__title">Search Adzuna Jobs</h2>
-      <input
-        className="adzuna__input"
-        type="text"
-        placeholder="Search for jobs..."
-        value={description}
-        onChange={(e) => setDescription(e.target.value)}
-      />
-      <input
-        className="adzuna__input"
-        type="text"
-        placeholder="Enter country code (e.g., gb, us)..."
-        value={country}
-        onChange={(e) => setCountry(e.target.value)}
-      />
-      <button className="adzuna__button" onClick={handleSearch}>
-        Search
-      </button>
+      <h2 className="adzuna-title">Search Jobs</h2>
+
+      <div className="adzuna-input-card">
+        <input
+          type="text"
+          className="adzuna-input"
+          placeholder="Description (e.g., Javascript Developer)"
+          value={description} // Updated from search
+          onChange={(e) => setDescription(e.target.value)} // Updated from setSearchTerm
+        />
+        <input
+          type="text"
+          className="adzuna-input"
+          placeholder="Enter country code (e.g., gb, us)"
+          value={country}
+          onChange={(e) => setCountry(e.target.value)}
+        />
+        <button className="adzuna-button" onClick={handleSearch}>
+          Search
+        </button>
+      </div>
 
       {loading && <div>Loading...</div>}
 
       {isSearchSuccessful && (
         <div>
-          <h3 className="adzuna__job-title-heading">Job Results:</h3>
-          <ul className="adzuna__job-list">
+          <h3 className="adzuna-job-list-header">Job Results:</h3>
+          <ul className="adzuna-job-list">
             {jobs.map((job, index) => (
-              <li className="adzuna__job-item" key={index}>
-                <h4 className="adzuna__job-title">{job.title}</h4>
-                <p className="adzuna__job-description">{job.description}</p>
-                <a
+              <li className="adzuna-job-item" key={index}>
+                <h2 className="adzuna-job-title">{job.title}</h2>
+                <p className="adzuna-job-description">{job.description}</p>
+                <a className="adzuna-job-link"
                   href={job.redirect_url}
-                  className="adzuna__job-link"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  Learn more
+                  View Job Details
                 </a>
               </li>
             ))}
@@ -78,4 +80,5 @@ const AdzunaJobSearch = () => {
     </div>
   );
 };
+
 export default AdzunaJobSearch;
