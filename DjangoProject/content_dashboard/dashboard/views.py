@@ -1,3 +1,4 @@
+from rest_framework.decorators import action
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -7,6 +8,9 @@ from .serializers import UserRegistrationSerializer
 from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.authtoken.models import Token
 from .serializers import CompanySerializer, JobOpeningSerializer
+from decouple import config
+
+import requests
 
 
 class UserRegistrationView(APIView):
@@ -40,7 +44,6 @@ class CompanyViewSet(viewsets.ModelViewSet):
     serializer_class = CompanySerializer
 
 
-
 class JobOpeningViewSet(viewsets.ModelViewSet):
     serializer_class = JobOpeningSerializer
 
@@ -49,3 +52,31 @@ class JobOpeningViewSet(viewsets.ModelViewSet):
         if company_id:
             return JobOpening.objects.filter(company__id=company_id)
         return JobOpening.objects.all()
+
+
+ADZUNA_API_URL = "https://api.adzuna.com/v1/api/jobs/{country}/search/1"
+
+
+class AdzunaJobsViewSet(viewsets.ViewSet):
+
+    @action(detail=False, methods=['GET'])
+    def fetch_jobs(self, request):
+        country = request.GET.get('country')  # default to US
+
+        params = {
+            'app_id': config('ADZUNA_APP_ID'),
+            'app_key': config('ADZUNA_APP_KEY'),
+        }
+
+        headers = {
+            'Content-Type': 'application/json'
+        }
+
+        api_url = ADZUNA_API_URL.format(country=country)
+
+        try:
+            response = requests.get(api_url, params=params, headers=headers)
+            response.raise_for_status()
+            return Response(response.json(), status=status.HTTP_200_OK)
+        except requests.RequestException as e:
+            return Response({'error': str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
