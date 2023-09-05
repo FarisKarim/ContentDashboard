@@ -8,7 +8,8 @@ import ProtectedRoute from "./utils/ProtectedRoute";
 import CompanyList from "./components/Company/CompanyList";
 import JobOpeningList from "./components/JobOpenings/JobOpeningsList";
 import CompanyDetail from "./components/Company/CompanyDetail/CompanyDetail";
-
+import AdzunaJobSearch
+ from "./components/Company/AdzunaJobSearch";
 const App = () => {
   return (
     <Router>
@@ -20,6 +21,7 @@ const App = () => {
             <Route index element={<Home />} />
           </Route>
           <Route path="/companies" element={<CompanyList />} />
+          <Route path = "/search_companies" element={<AdzunaJobSearch />} />
           <Route path="/companies/:id" element={<CompanyDetail />} />
           <Route
             path="/companies/:id/job_openings"
