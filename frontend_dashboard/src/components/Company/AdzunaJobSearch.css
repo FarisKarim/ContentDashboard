@@ -1,58 +1,97 @@
 /* AdzunaJobs.css */
 
-.cl-container {
-    font-family: Arial, sans-serif;
-    padding: 20px;
-    background-color: #f9f9f9; /* Light background */
-    border-radius: 5px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    max-width: 500px;
-    margin: auto;
+.adzuna-container {
+  font-family: "Arial", sans-serif;
+  padding: 40px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  margin: 40px auto;
 }
 
-.cl-title {
-    color: #333; 
-    text-align: center;
-    margin-bottom: 20px;
+.adzuna__title {
+  color: #444;
+  text-align: center;
+  margin-bottom: 40px;
+  font-weight: bold;
+  font-size: 24px;
 }
 
-input {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+.adzuna__input {
+  width: 100%;
+  padding: 12px 16px;
+  margin-bottom: 20px;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  background-color: #fff;
+  transition: border-color 0.3s;
 }
 
-button {
-    background-color: #007BFF; /* Blue */
-    color: #fff;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    display: block;
-    margin: 20px auto;
-    transition: background-color 0.3s;
+.adzuna__input:focus {
+  border-color: #007bff;
+  outline: none;
 }
 
-button:hover {
-    background-color: #0056b3; /* Darker blue */
+.adzuna__button {
+  background-color: #007bff;
+  color: #fff;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  display: block;
+  margin: 30px auto;
+  transition: background-color 0.3s, transform 0.2s;
 }
 
-h3 {
-    color: #333; 
+.adzuna__button:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
 }
 
-ul {
-    list-style-type: none;
-    padding: 0;
+.adzuna__job-title {
+    font-weight: bold;
+    margin-bottom: 8px;
+    font-size: 18px;
+    color: #333;
+}
+.adzuna__job-description {
+    margin-top: 10px;
+    color: #666;
+    line-height: 1.5;
+    font-size: 14px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* Number of lines to display before truncating */
+    -webkit-box-orient: vertical;
+}
+.adzuna__job-list {
+  list-style-type: none;
+  padding: 0;
 }
 
-li {
-    background-color: #fff; /* White background for each job */
-    padding: 10px;
-    border-radius: 4px;
-    margin-bottom: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* subtle shadow for each job */
+.adzuna__job-item {
+  background-color: #fff;
+  padding: 20px 15px;
+  border-radius: 6px;
+  margin-bottom: 15px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.08);
+  transition: box-shadow 0.3s;
+}
+
+.adzuna__job-item:hover {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.12);
+}
+.adzuna__job-link {
+    color: #007BFF;
+    text-decoration: none;
+    margin-top: 15px;
+    display: inline-block;
+    transition: color 0.3s;
+}
+
+.adzuna__job-link:hover {
+    color: #0056b3;
 }

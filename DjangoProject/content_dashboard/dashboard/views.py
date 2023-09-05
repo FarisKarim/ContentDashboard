@@ -61,11 +61,12 @@ class AdzunaJobsViewSet(viewsets.ViewSet):
 
     @action(detail=False, methods=['GET'])
     def fetch_jobs(self, request):
-        country = request.GET.get('country')  # default to US
-
+        country = request.GET.get('country','us')  # default to US
+        description = request.GET.get('description', 'python')
         params = {
             'app_id': config('ADZUNA_APP_ID'),
             'app_key': config('ADZUNA_APP_KEY'),
+            'what': description,
         }
 
         headers = {
