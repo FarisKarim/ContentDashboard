@@ -1,61 +1,77 @@
+/* General Container */
 .adzuna-container {
     font-family: 'Roboto Mono', monospace;
-    padding: 40px;
-    background-color: #f9f9f9;
-    border-radius: 5px;
+    padding: 60px;
+    background-color: #f5f5f5; 
+    border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 40px auto;
 }
 
+/* Title */
 .adzuna-title {
     color: #333;
     text-align: center;
-    margin-bottom: 50px;
+    margin-bottom: 60px;
+    font-size: 2em;
     font-family: 'Arvo', serif;
 }
 
+/* Input Card */
 .adzuna-input-card {
     background-color: #ffffff;
-    padding: 15px; 
-    border-radius: 15px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    margin: 0 auto 80px auto; /* Centered horizontally and given space at the bottom */
-    width: 50%; /* Adjust this percentage to make it smaller or larger as desired */
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    margin: 0 auto 100px auto;
+    width: 60%;
 }
 
+/* Inputs */
 .adzuna-input {
     width: 100%;
-    padding: 8px;
-    margin: 10px 0; /* Reduced to 0 for the sides */
-    border: 1px solid #ccc;
-    border-radius: 15px;
+    padding: 12px;
+    margin: 12px 0;
+    border: 2px solid #e0e0e0; 
+    border-radius: 20px;
+    font-size: 1.1em;
+    transition: border-color 0.3s;
 }
 
+.adzuna-input:focus {
+    border-color: #b30000;  /* Add a focus effect */
+    outline: none;
+}
+
+/* Button */
 .adzuna-button {
     background-color: #b30000;
     color: #fff;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
+    padding: 12px 24px;
+    border-radius: 8px;
     cursor: pointer;
     display: block;
-    margin: 30px auto;
-    transition: background-color 0.3s, transform 0.3s;
+    margin: 40px auto;
+    transition: all 0.4s;
+    font-size: 1.1em;
 }
 
 .adzuna-button:hover {
     background-color: #ff1a1a;
-    transform: scale(1.05);
+    transform: translateY(-2px);  /* Slight lift on hover */
 }
 
+/* Job List Header */
 .adzuna-job-list-header {
     color: #333;
     margin-top: 80px;
     margin-bottom: 40px;
     text-align: center;
+    font-size: 1.6em;
 }
 
+/* Job List */
 .adzuna-job-list {
     list-style-type: none;
     padding: 0;
@@ -64,47 +80,60 @@
     gap: 40px;
 }
 
+/* Job Items */
 .adzuna-job-item {
-    background-color: #1c1c1c;
+    background-color: #ffffff;
     padding: 20px;
     border-radius: 15px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s, box-shadow 0.3s;
     display: flex;
-    flex-direction: column; 
+    flex-direction: column;
     justify-content: space-between;
 }
 
 .adzuna-job-item:hover {
     transform: scale(1.05);
-    box-shadow: 0 4px 12px rgba(26, 255, 26, 0.3), 0 0 20px rgba(26, 255, 26, 0.2); /* Green glow effect */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); 
 }
+
 .adzuna-job-title {
     font-weight: bold;
-    font-size: 1.2em;
+    font-size: 1.4em;
     margin-bottom: 10px;
-    color: #17f37a;
+    color: #17693c;
     font-family: 'Arvo', serif;
 }
 
 .adzuna-job-description {
-    flex-grow: 1; 
+    flex-grow: 1;
     margin-bottom: 15px;
-    color: #bbb; 
-    font-family: 'Roboto Mono', monospace; 
+    color: rgb(92, 89, 89);
+    font-size: 1.05em;
+    font-family: 'Roboto Mono', monospace;
 }
+
 .adzuna-job-link {
     align-self: center;
-    color: #ffffff;  /* White text for contrast */
-    background-color: #4CAF50;  /* Green background for the link */
-    padding: 5px 15px;
+    color: #ffffff;
+    background-color: #4CAF50;
+    padding: 8px 18px;
     border-radius: 15px;
     text-decoration: none;
-    transition: background-color 0.3s, color 0.3s;
-    font-family: 'Roboto Mono' monospace;
+    transition: all 0.3s;
+    font-size: 1.05em;
 }
 
 .adzuna-job-link:hover {
-    background-color: #388E3C;  /* Darker shade of green on hover */
-    color: #ffffff;
+    background-color: #388E3C;
+    color: #f5f5f5;
+}
+
+/* Loading Text */
+/* You can enhance this further with animations or loaders */
+div[aria-busy="true"] {
+    font-size: 1.5em;
+    color: #333;
+    text-align: center;
+    padding: 20px;
 }

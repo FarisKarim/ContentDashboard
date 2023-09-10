@@ -7,9 +7,9 @@ from .models import CustomUser, Company, JobOpening
 from .serializers import UserRegistrationSerializer
 from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.authtoken.models import Token
-from .serializers import CompanySerializer, JobOpeningSerializer
+from .serializers import CompanySerializer, JobOpeningSerializer, CustomUserSerializer
 from decouple import config
-
+from rest_framework import generics, permissions
 import requests
 
 
@@ -20,13 +20,6 @@ class UserRegistrationView(APIView):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-
-class SomeEndpointView(APIView):
-    permission_classes = [IsAuthenticated]
-
-    def get(self, request):
-        return Response({"message": "Hello, " + request.user.first_name + "!"})
 
 
 class CustomAuthToken(ObtainAuthToken):
@@ -82,3 +75,11 @@ class AdzunaJobsViewSet(viewsets.ViewSet):
             return Response(response.json(), status=status.HTTP_200_OK)
         except requests.RequestException as e:
             return Response({'error': str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+
+class UserProfileAPIView(generics.RetrieveAPIView):
+    serializer_class = CustomUserSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get_object(self):
+        return self.request.user

@@ -1,13 +1,30 @@
+/* Using a linear gradient for a subtle transition of colors */
 .bg-light-purple {
-    background-color: #f5eaf8; 
+    background: linear-gradient(45deg, #f0e9f6, #f5eaf8); 
 }
 
 .bg-purple {
-    background-color: #a864c7; 
+    background-color: #a075c2;
+    border-radius: 10px; /* Added rounded corners for a sleek look */
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1); /* Adding a little shadow for depth */
+}
+
+.jumbotron.bg-purple.text-white {
+    border: none; /* Removing the default jumbotron border */
+    transition: all 0.3s ease; /* Smoother transitions */
 }
 
 .jumbotron.bg-purple.text-white hr.bg-light {
-    border-top-color: #f5eaf8;
+    width: 50%; /* Making the line shorter for a more refined look */
+    border-top-color: #f0e9f6; /* Slightly lightening the line for a delicate appearance */
+    margin: 20px auto; /* Centering the line */
+}
+
+.btn {
+    border-radius: 25px; /* Rounded buttons are common in modern designs */
+    padding: 10px 30px; /* Slightly larger padding for a fuller button */
+    font-weight: 600; /* Making the text slightly bolder */
+    transition: all 0.3s ease; /* Adding transitions for smooth hover effects */
 }
 
 .btn.btn-dark {
@@ -16,5 +33,19 @@
 }
 
 .btn.btn-dark:hover {
-    background-color: #583783; 
+    background-color: #583783;
+    transform: translateY(-2px); /* A slight lift on hover for a dynamic feel */
+    box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.1); /* More pronounced shadow on hover */
+}
+
+.btn.btn-light {
+    color: #6b4899; /* Using the purple for the text to tie in the color scheme */
+}
+
+.btn.btn-light:hover {
+    background-color: #f0e9f6; /* Slightly changing the background color on hover */
+}
+
+.container {
+    max-width: 800px; /* Making the container slightly narrower for better focus */
 }

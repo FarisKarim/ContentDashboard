@@ -40,3 +40,8 @@ class JobOpeningSerializer(serializers.ModelSerializer):
     class Meta:
         model = JobOpening
         fields = '__all__'
+
+class CustomUserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CustomUser
+        fields = ['email', 'first_name', 'last_name', 'date_joined', 'profile_pic', 'bio', 'website']
